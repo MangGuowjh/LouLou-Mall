@@ -1,35 +1,44 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <transition :name="transitionName">
       <router-view class="router-view" />
     </transition>
-    <!-- <router-view/> -->
+    <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
-export default ({
+import navBar from "@/components/NavBar";
+export default {
   data() {
     return {
-      transitionName: 'alide-left',
-    }
+      transitionName: "slide-left",
+    };
+  },
+  components: {
+    navBar,
   },
   watch: {
     $route(to, from) {
+      // 由主级到次级
+      // to.meta 能取到 route 路由参数中的 meta 属性
+      // 有主级到次级
       if (to.meta.index > from.meta.index) {
-        this.transitionName = "slide-left";
+        // 通过改变变量名称控制左右滑动
+        this.transitionName = "slide-left"; // 向左滑动
       } else if (to.meta.index < from.meta.index) {
+        // 由次级到主级
         this.transitionName = "slide-right";
-      }else {
-        this.transitionName = " ";
+      } else {
+        this.transitionName = ""; //同级无过渡效果
       }
-    }
-  }
-})
+    },
+  },
+};
 </script>
 
 <style lang="less">
@@ -41,7 +50,6 @@ export default ({
   text-align: center;
   color: #2c3e50;
 }
-
 #nav {
   position: absolute;
   top: 0;
@@ -60,27 +68,27 @@ export default ({
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,
-.slide-left-leave-active {  
-  height: 100%;  
-  will-change: transform;  
-  transition: all 500ms;  
-  position: absolute;  
+.slide-left-leave-active {
+  height: 100%;
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
   backface-visibility: hidden;
 }
-.slide-right-enter {  
-  opacity: 0;  
+.slide-right-enter {
+  opacity: 0;
   transform: translate3d(-100%, 0, 0);
 }
-.slide-right-leave-active {  
-  opacity: 0;  
+.slide-right-leave-active {
+  opacity: 0;
   transform: translate3d(100%, 0, 0);
 }
-.slide-left-enter {  
-  opacity: 0;  
+.slide-left-enter {
+  opacity: 0;
   transform: translate3d(100%, 0, 0);
 }
-.slide-left-leave-active {  
-  opacity: 0;  
+.slide-left-leave-active {
+  opacity: 0;
   transform: translate3d(-100%, 0, 0);
 }
 </style>

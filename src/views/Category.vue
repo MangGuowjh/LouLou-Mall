@@ -1,12 +1,12 @@
 <template>  
-  <div class="home">    
-    <div>我是首页</div>  
+  <div class="category-box">    
+    <div>我是分类页</div>  
   </div>
 </template>
 
 <script>
 export default {  
-  name: 'home',
+  name: 'category',
 };
 </script>
 

@@ -5,25 +5,52 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // 首页我们需要默认空路径重定向到 home ，避免空页面
+  {    
+    path: '/',    
+    name: 'home',    
+    redirect: 'home',  
+  },
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
     meta: {
       index : 1
     }
   },
+  {    
+    path: '/category',    
+    name: 'category',    
+    component: () => import(/* webpackChunkName: "category" */ '../views/Category.vue'),    
+    meta: {      
+      index: 1,    
+    },  
+  },  
+  {    
+    path: '/cart',    
+    name: 'cart',    
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),    
+    meta: {      
+      index: 1,    
+    },  
+  },  
+  {    
+    path: '/user',    
+    name: 'user',    
+    component: () => import(/* webpackChunkName: "user" */ '../views/User.vue'),    
+    meta: {      
+      index: 1,    
+    },
+  },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: {
-      index: 2
+    path: '/detail',  
+    name: 'detail',  
+    component: () => import(/* webpackChunkName: "detail" */ '../views/Detail.vue'),  
+    meta: {    
+      index: 2  
     }
-  }
+  },  
 ]
 
 const router = new VueRouter({
