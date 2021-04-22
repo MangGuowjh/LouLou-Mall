@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'lib-flexible/flexible'
-import { Button } from 'vant'
+import { Button, Form, Field, Toast } from 'vant'
+import md5 from 'js-md5'
 
-Vue.use(Button)
+
+Vue.use(Form).use(Field).use(Toast).use(Button)
+Vue.prototype.$md5 = md5
 
 Vue.config.productionTip = false
 
