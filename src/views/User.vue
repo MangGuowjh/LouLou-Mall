@@ -21,6 +21,8 @@
       />
       <van-grid-item @click="goTo('about')" icon="friends-o" text="关于我们" />
     </van-grid>
+    <br />
+    <router-link to="/login">登录注册</router-link>
   </div>
 </template>
 
@@ -39,6 +41,14 @@ export default {
     // 赋值给 user
     this.user = data;
   },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+    goTo(r) {
+      this.$router.push({path: r});
+    }
+  }
 };
 </script>
 
