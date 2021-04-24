@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <h2>denglin</h2> -->
     <header class="home-header wrap">
       <router-link tag="i" to="./category"
         ><i class="iconfont icon-menu"></i
@@ -17,15 +16,19 @@
       >
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
-      </router-link> 
+      </router-link>
     </header>
   </div>
-</template><script>
+</template>
+
+<script>
 import { getLocal } from "@/common/js/utils";
 export default {
   name: "Home",
   data() {
-    return { isLogin: false };
+    return {
+      isLogin: false,
+    };
   },
   mounted() {
     const token = getLocal("token");
@@ -34,7 +37,9 @@ export default {
     }
   },
 };
-</script><style lang="less" scoped>
+</script>
+
+<style lang="less" scoped>
 @import "../common/style/mixin";
 .home {
   .home-header {

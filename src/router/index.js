@@ -6,11 +6,11 @@ Vue.use(VueRouter)
 
 const routes = [
   // 首页我们需要默认空路径重定向到 home ，避免空页面
-  {    
-    path: '/',    
-    name: 'home',    
-    redirect: 'home',  
-  },
+  // {    
+  //   path: '/',    
+  //   name: 'home',    
+  //   redirect: 'home',  
+  // },
   {
     path: '/',
     name: 'home',
