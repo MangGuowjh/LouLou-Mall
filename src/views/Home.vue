@@ -17,24 +17,41 @@
       >
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
-      </router-link> 
+      </router-link>
     </header>
+    <swiper :list="swiperList"></swiper>
   </div>
-</template><script>
+</template>
+
+<script>
 import { getLocal } from "@/common/js/utils";
+import swiper from "@/components/Swiper";
+import { getHome } from "../service/home";
+import { Toast } from "vant";
 export default {
   name: "Home",
   data() {
-    return { isLogin: false };
+    return {
+      isLogin: false,
+      swiperList: [],
+    };
   },
-  mounted() {
+  components: { 
+    swiper 
+  },
+  async mounted() {
     const token = getLocal("token");
     if (token) {
       this.isLogin = true;
     }
+    Toast.loading({ message: "加载中...", forbidClick: true });
+    const { data } = await getHome();
+    this.swiperList = data.carousels;
   },
 };
-</script><style lang="less" scoped>
+</script>
+
+<style lang="less" scoped>
 @import "../common/style/mixin";
 .home {
   .home-header {
