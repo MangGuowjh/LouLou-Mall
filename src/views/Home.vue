@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- 顶部导航 -->
-    <header class="home-header wrap">
+    <header class="home-header wrap" :class="{ active: headerScroll }">
       <!-- 点击搜索框跳转到分类页 -->
       <router-link tag="i" to="./category"
         ><i class="iconfont icon-menu"></i
@@ -98,6 +98,7 @@ export default {
   name: "Home",
   data() {
     return {
+      headerScroll: false,
       isLogin: false,
       swiperList: [],
       categoryList: [
@@ -119,6 +120,7 @@ export default {
   },
   components: { swiper },
   async mounted() {
+    window.addEventListener("scroll", this.pageScroll);
     const token = getLocal("token");
     if (token) {
       this.isLogin = true;
@@ -130,13 +132,24 @@ export default {
     this.newGoods = data.newGoods;// 新品上线
     this.recommendGoods = data.recommendGoods;// 最新推荐
   },
+  methods: {
+    pageScroll() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      scrollTop > 100
+        ? (this.headerScroll = true)
+        : (this.headerScroll = false);
+    },
+  },
 };
 </script>
-
 
 <style lang="less" scoped>
 @import "../common/style/mixin";
 .home {
+  height: 100%;
   // 吸顶头部样式
   .home-header {
     position: fixed;
