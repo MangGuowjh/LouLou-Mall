@@ -95,7 +95,7 @@ import swiper from "@/components/Swiper";
 import { getHome } from "../service/home";
 import { Toast } from "vant";
 export default {
-  name: "Home",
+  name: "home",
   data() {
     return {
       headerScroll: false,
@@ -127,10 +127,10 @@ export default {
     }
     Toast.loading({ message: "加载中...", forbidClick: true });
     const { data } = await getHome();
-    this.swiperList = data.carousels;//轮播图
-    this.hotGoods = data.hotGoods;// 热门商品
-    this.newGoods = data.newGoods;// 新品上线
-    this.recommendGoods = data.recommendGoods;// 最新推荐
+    this.swiperList = data.carousels; //轮播图
+    this.hotGoods = data.hotGoods; // 热门商品
+    this.newGoods = data.newGoods; // 新品上线
+    this.recommendGoods = data.recommendGoods; // 最新推荐
   },
   methods: {
     pageScroll() {

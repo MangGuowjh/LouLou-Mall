@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   // 首页我们需要默认空路径重定向到 home ，避免空页面
-  // {    
-  //   path: '/',    
-  //   name: 'home',    
-  //   redirect: 'home',  
-  // },
+  {    
+    path: '/',    
+    name: 'home',    
+    redirect: 'home',  
+  },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: Home,
+    component: home,
     meta: {
       index : 1
     }
