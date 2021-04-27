@@ -121,6 +121,7 @@ export default {
       const { resultCode } = await logout();
       if (resultCode == 200) {
         setLocal("token", "");
+        setLocal("userId", "");
         window.location.href = "/";
       }
     },
