@@ -118,14 +118,20 @@ export default {
       recommendGoods: [],
     };
   },
-  components: { swiper },
+  components: { 
+    swiper 
+  },
   async mounted() {
     window.addEventListener("scroll", this.pageScroll);
     const token = getLocal("token");
     if (token) {
       this.isLogin = true;
     }
-    Toast.loading({ message: "加载中...", forbidClick: true });
+    Toast.loading({ 
+      message: "加载中...", 
+      forbidClick: true,
+      duration: 1500,
+    });
     const { data } = await getHome();
     this.swiperList = data.carousels; //轮播图
     this.hotGoods = data.hotGoods; // 热门商品

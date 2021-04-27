@@ -82,7 +82,15 @@ const routes = [
       index: 2
     },
     component: () => import(/* webpackChunkName: "setting" */ '../views/Setting.vue'),
-  },      
+  },   
+  {
+    path: '/product-list',
+    name: 'product-list',
+    meta: {
+      index: 2
+    },
+    component: () => import(/* webpackChunkName: "setting" */ '../views/ProductList.vue'),
+  },    
 ]
 
 const router = new VueRouter({

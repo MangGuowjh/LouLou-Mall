@@ -3,7 +3,8 @@
     <s-header :title="'我的'"></s-header>
     <div class="user-info">
       <div class="info">
-        <img src="https://mangguo-music.oss-cn-shanghai.aliyuncs.com/family/dl.jpg" />
+        <!-- <img src="https://mangguo-music.oss-cn-shanghai.aliyuncs.com/family/dl.jpg" /> -->
+        <img :src="user.avatar" />
         <div class="user-desc">
           <span>昵称：{{ user.nickName }}</span>
           <span>登录名：{{ user.loginName }}</span>
@@ -21,8 +22,8 @@
       />
       <van-grid-item @click="goTo('about')" icon="friends-o" text="关于我们" />
     </van-grid>
-    <br />
-    <router-link to="/login">登录注册</router-link>
+
+    
   </div>
 </template>
 
@@ -31,9 +32,13 @@ import sHeader from "@/components/SimpleHeader";
 import { getUserInfo } from "../service/user";
 export default {
   name: "User",
-  components: { sHeader },
+  components: {
+    sHeader,
+  },
   data() {
-    return { user: {} };
+    return {
+      user: {},
+    };
   },
   async mounted() {
     // 获取用户信息数据
@@ -46,9 +51,9 @@ export default {
       this.$router.go(-1);
     },
     goTo(r) {
-      this.$router.push({path: r});
-    }
-  }
+      this.$router.push({ path: r });
+    },
+  },
 };
 </script>
 
