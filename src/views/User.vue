@@ -23,7 +23,7 @@
       <van-grid-item @click="goTo('about')" icon="friends-o" text="关于我们" />
     </van-grid>
 
-    
+    <router-link to="/login">登录</router-link>
   </div>
 </template>
 

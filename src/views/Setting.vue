@@ -14,8 +14,8 @@
         @click="handleClick"
       ></van-image>
       <div style="display:none;">
-        <input type="file" @change="onChange" ref="selectFile" />
-        <!-- <input type="file" @change="onChange" ref="selectFile" multiple /> -->
+        <!-- <input type="file" @change="onChange" ref="selectFile" /> -->
+        <input type="file" @change="onChange" ref="selectFile" multiple />
       </div>
     </div>
     <van-button
