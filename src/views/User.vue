@@ -4,7 +4,14 @@
     <div class="user-info">
       <div class="info">
         <!-- <img src="https://mangguo-music.oss-cn-shanghai.aliyuncs.com/family/dl.jpg" /> -->
-        <img :src="user.avatar" />
+        <!-- <img :src="user.avatar" /> -->
+        <img
+          :src="
+            user.avatar
+              ? user.avatar
+              : 'https://mangguo-music.oss-cn-shanghai.aliyuncs.com/family/dl.jpg'
+          "
+        />
         <div class="user-desc">
           <span>昵称：{{ user.nickName }}</span>
           <span>登录名：{{ user.loginName }}</span>

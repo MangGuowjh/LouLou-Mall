@@ -9,7 +9,11 @@
         round
         width="60px"
         height="60px"
-        :src="avatar"
+        :src="
+          avatar
+            ? avatar
+            : 'https://mangguo-music.oss-cn-shanghai.aliyuncs.com/family/dl.jpg'
+        "
         style="margin-left:20px;"
         @click="handleClick"
       ></van-image>
